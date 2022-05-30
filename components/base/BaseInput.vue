@@ -34,16 +34,19 @@ export default {
   direction: rtl;
 
   &::v-deep .v-input__slot {
+    // input border
     border: 1px solid #d5d5d5;
   }
 
   &::v-deep .v-text-field__details {
+    // details appear on the right side of the input
     position: absolute;
     margin: 2px 0 0;
     left: 100%;
     z-index: 999;
 
     .v-messages__message {
+      // tooltip style
       background-color: #f44336;
       color: #fff;
       padding: 10px;
@@ -53,6 +56,7 @@ export default {
       position: relative;
 
       &::after {
+        // tip of the tooltip
         content: '';
         position: absolute;
         top: 40%;
