@@ -9,6 +9,10 @@
     dense
     @input="$emit('input', $event)"
   >
+    <!-- passing slot from parent to v-text-field component -->
+    <template v-for="(index, name) in $slots" #[name]>
+      <slot :name="name"></slot>
+    </template>
   </v-text-field>
 </template>
 
