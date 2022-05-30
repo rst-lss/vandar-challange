@@ -3,7 +3,6 @@
     class="base-input"
     :value="value"
     v-bind="$attrs"
-    placeholder="نام"
     persistent-placeholder
     solo
     flat
