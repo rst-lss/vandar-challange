@@ -57,14 +57,14 @@ export default {
         .post('register/check/mobile', { mobile: this.phone })
         .then(({ data }) => {
           // notify parent component
-          this.$emit('submited', { data, mobile: this.phone })
+          this.$emit('submited', { ...data, mobile: this.phone })
         })
         .catch(({ data }) => {
           // show error tooltip for phone input
           this.errorMessage = data.message
 
           // emit event to notify parent component
-          this.$emit('error', { data, mobile: this.phone })
+          this.$emit('error', { ...data, mobile: this.phone })
         })
     },
 
