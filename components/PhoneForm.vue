@@ -3,6 +3,7 @@
     ref="phoneForm"
     v-model="isValid"
     lazy-validation
+    @submit.prevent="submitPhone"
   >
     <!-- mobile input -->
     <base-input
@@ -50,5 +51,32 @@ export default {
     }
   },
   methods: {
+    // checks if user has registered or not
+    checkMobile() {
+      return this.$axios
+        .post('register/check/mobile', { mobile: this.phone })
+        .then(({ data }) => {
+          // notify parent component
+          this.$emit('submited', data)
+        })
+        .catch(({ data }) => {
+          // show error tooltip for phone input
+          this.errorMessage = data.message
+
+          // emit event to notify parent component
+          this.$emit('error', data)
+        })
+    },
+
+    async submitPhone() {
+      this.$refs.phoneForm.validate()
+
+      if (this.isValid) {
+        this.loading = true
+        await this.checkMobile()
+        this.loading = false
+      }
+    },
+  },
 }
 </script>
