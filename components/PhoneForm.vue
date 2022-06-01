@@ -10,7 +10,6 @@
       v-model="phone"
       class="mb-2"
       placeholder="مثال:‌ 09121234567"
-      :error-messages="errorMessage"
       :rules="rules"
       type="tel"
       required
@@ -60,9 +59,6 @@ export default {
           this.$emit('submited', { ...data, mobile: this.phone })
         })
         .catch(({ data }) => {
-          // show error tooltip for phone input
-          this.errorMessage = data.message
-
           // emit event to notify parent component
           this.$emit('error', { ...data, mobile: this.phone })
         })
