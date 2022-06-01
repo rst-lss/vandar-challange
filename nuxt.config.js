@@ -43,12 +43,39 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    // https://auth.nuxtjs.org/
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
+  },
+
+  // Auth module configuration: https://auth.nuxtjs.org/schemes/local
+  auth: {
+    strategies: {
+      scheme: 'refresh',
+      token: {
+        property: 'access_token',
+        maxAge: 431999,
+        global: true,
+      },
+      refreshToken: {
+        property: 'refresh_token',
+        data: 'refreshtoken',
+      },
+      user: {
+        property: 'user',
+      },
+      endpoints: {
+        login: { url: '/api/auth/login', method: 'post' },
+        refresh: { url: '/api/auth/refreshtoken', method: 'post' },
+        user: false,
+        logout: false,
+      },
+    },
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
