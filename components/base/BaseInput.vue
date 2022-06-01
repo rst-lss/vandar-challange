@@ -8,6 +8,7 @@
     flat
     dense
     @input="$emit('input', $event)"
+    v-on="$listeners"
   >
     <!-- passing slot from parent to v-text-field component -->
     <template v-for="(index, name) in $slots" #[name]>
