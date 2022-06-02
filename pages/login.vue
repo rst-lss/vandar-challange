@@ -91,6 +91,7 @@ export default {
           name: 'OtpForm',
           props: {
             phone: mobile,
+            scope: 'Register',
           },
         }
       }
