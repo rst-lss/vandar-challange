@@ -64,5 +64,26 @@ export default {
       passwordRules: [(input) => Boolean(input) || 'این فیلد الزامیست'],
     }
   },
+  methods: {
+    recoverPassword() {
+      return this.$axios
+        .post('/mobile/send', {
+          mobile: this.phone,
+          password: this.password,
+          scope: 'ForgotPass',
+        })
+        .then(({ data }) => {
+          this.$emit('submited', {
+            ...data,
+            mobile: this.phone,
+            password: this.password,
+          })
+        })
+        .catch(({ data }) => {
+          this.$emit('error', { message: data.error })
+        })
+    },
+
+  },
 }
 </script>
