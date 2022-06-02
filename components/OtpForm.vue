@@ -17,6 +17,7 @@ export default {
   name: 'OtpForm',
   props: {
     phone: { type: String, required: true },
+    scope: { type: String, required: true },
   },
   data() {
     return {
@@ -32,7 +33,7 @@ export default {
         .post('/mobile/verify', {
           mobile: this.phone,
           key: this.key,
-          scope: 'Register',
+          scope: this.scope,
         })
         .then(() => {
           // notify parent component about success
