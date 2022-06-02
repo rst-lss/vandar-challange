@@ -43,6 +43,16 @@ export default {
           this.$emit('error', data)
         })
     },
+    async submitOtp() {
+      await this.$refs.otpForm.validate()
+
+      if (this.isValid) {
+        this.loading = true
+        await this.verifyOtp()
+        this.loading = false
+      }
+    },
+  },
 }
 </script>
 
