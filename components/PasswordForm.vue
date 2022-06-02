@@ -93,7 +93,7 @@ export default {
     },
 
     async submitPassword() {
-      this.$refs.passwordForm.validate()
+      await this.$refs.passwordForm.validate()
 
       if (this.isValid) {
         this.loading = true
