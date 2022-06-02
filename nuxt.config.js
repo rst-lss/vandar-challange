@@ -71,8 +71,8 @@ export default {
           property: 'user',
         },
         endpoints: {
-          login: { url: '/api/auth/login', method: 'post' },
-          refresh: { url: '/api/auth/refreshtoken', method: 'post' },
+          login: { url: '/login', method: 'post' },
+          refresh: { url: '/refreshtoken', method: 'post' },
           user: false,
           logout: false,
         },
