@@ -87,8 +87,9 @@ export default {
             login: { password: this.password, mobile: this.phone },
           })
         )
-        .catch(({ data }) => {
-          this.$emit('error', data)
+        .catch(({ response: { data } }) => {
+          // notify parent component about error
+          this.$emit('error', { message: data.error })
         })
     },
 

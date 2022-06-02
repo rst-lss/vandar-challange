@@ -39,9 +39,9 @@ export default {
           // notify parent component about success
           this.$emit('submited', { mobile: this.phone })
         })
-        .catch(({ data }) => {
+        .catch(({ response: { data } }) => {
           // notify parent component about error
-          this.$emit('error', data)
+          this.$emit('error', { message: data.error })
         })
     },
     async submitOtp() {
