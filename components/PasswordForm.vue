@@ -74,5 +74,24 @@ export default {
       showPass: false,
     }
   },
+  methods: {
+    login() {
+      return this.$auth
+        .login({
+          mobile: this.phone,
+          password: this.password,
+        })
+        .then(({ data }) =>
+          this.$emit('submited', {
+            ...data,
+            login: { password: this.password, mobile: this.phone },
+          })
+        )
+        .catch(({ data }) => {
+          this.$emit('error', data)
+        })
+    },
+
+}
 </script>
 
