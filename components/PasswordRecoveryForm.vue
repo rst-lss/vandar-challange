@@ -3,7 +3,7 @@
     ref="recoveryForm"
     v-model="isValid"
     lazy-validation
-    @submit.prevent="submitPhone"
+    @submit.prevent="submit"
   >
     <!-- mobile input -->
     <base-input
@@ -84,6 +84,15 @@ export default {
         })
     },
 
+    async submit() {
+      await this.$refs.recoveryForm.validate()
+
+      if (this.isValid) {
+        this.loading = true
+        await this.recoverPassword()
+        this.loading = false
+      }
+    },
   },
 }
 </script>
