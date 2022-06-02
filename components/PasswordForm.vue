@@ -105,3 +105,12 @@ export default {
 }
 </script>
 
+<style lang="scss" scoped>
+.remember-me {
+  padding: 0.5rem;
+  background-color: #e5e5e5;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  direction: rtl;
+}
+</style>
