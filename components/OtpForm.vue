@@ -25,6 +25,24 @@ export default {
       rules: [(input) => Boolean(input) || 'این فیلد الزامیست'],
     }
   },
+  methods: {
+    // checks code and emit submited event
+    verifyOtp() {
+      return this.$axios
+        .post('/mobile/verify', {
+          mobile: this.phone,
+          key: this.key,
+          scope: 'Register',
+        })
+        .then(() => {
+          // notify parent component about success
+          this.$emit('submited', { mobile: this.phone })
+        })
+        .catch(({ data }) => {
+          // notify parent component about error
+          this.$emit('error', data)
+        })
+    },
 }
 </script>
 
