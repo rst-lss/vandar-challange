@@ -92,6 +92,16 @@ export default {
         })
     },
 
+    async submitPassword() {
+      this.$refs.passwordForm.validate()
+
+      if (this.isValid) {
+        this.loading = true
+        await this.login()
+        this.loading = false
+      }
+    },
+  },
 }
 </script>
 
