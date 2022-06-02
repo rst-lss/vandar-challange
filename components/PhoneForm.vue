@@ -65,7 +65,7 @@ export default {
     },
 
     async submitPhone() {
-      this.$refs.phoneForm.validate()
+      await this.$refs.phoneForm.validate()
 
       if (this.isValid) {
         this.loading = true
