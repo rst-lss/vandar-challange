@@ -83,3 +83,23 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.date-picker {
+  padding: 1rem;
+  background-color: #fff;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialog-activator {
+  border: 1px solid rgb(213, 213, 213) !important;
+
+  &.theme--dark.v-btn.v-btn--has-bg {
+    background-color: white !important;
+  }
+}
+</style>
