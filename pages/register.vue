@@ -114,8 +114,8 @@ export default {
   created() {
     // check if user has verified phone number
     // TODO use middleware
-    // if (this.phone === null || this.phone || '' || this.phone === undefined)
-    //   this.$router.push('/login')
+    if (this.phone === null || this.phone || '' || this.phone === undefined)
+      this.$router.push('/login')
   },
   methods: {
     registerUser() {
