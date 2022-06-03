@@ -43,7 +43,7 @@ export default {
     // details appear on the right side of the input
     position: absolute;
     margin: 2px 0 0;
-    left: 100%;
+    right: 100%;
     z-index: 999;
 
     .v-messages__message {
@@ -61,9 +61,9 @@ export default {
         content: '';
         position: absolute;
         top: 40%;
-        right: 100%;
+        left: 100%;
         border: 5px;
-        border-color: transparent #f44336 transparent transparent;
+        border-color: transparent transparent transparent #f44336;
         border-style: solid;
       }
     }
