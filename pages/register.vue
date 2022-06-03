@@ -73,6 +73,85 @@
   </div>
 </template>
 
+<script>
+import BaseInput from '@/components/base/BaseInput.vue'
+import BaseDatePicker from '@/components/base/BaseDatePicker.vue'
+
+export default {
+  components: {
+    BaseInput,
+    BaseDatePicker,
+  },
+  layout: 'register',
+  props: {
+    phone: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      register: {
+        nationalNumber: '',
+        fname: '',
+        lname: '',
+        date: {},
+      },
+      rules: {
+        nationalNumber: [
+          (input) => Boolean(input) || 'این فیلد الزامیست',
+          (input) => input.length === 10 || 'شماره ملی باید 10 رقم باشد',
+        ],
+        fname: [(input) => Boolean(input) || 'این فیلد الزامیست'],
+        lname: [(input) => Boolean(input) || 'این فیلد الزامیست'],
+        password: [(input) => Boolean(input) || 'این فیلد الزامیست'],
+      },
+      loading: false,
+      isValid: false,
+      showPass: false,
+    }
+  },
+  created() {
+    // check if user has verified phone number
+    // TODO use middleware
+    // if (this.phone === null || this.phone || '' || this.phone === undefined)
+    //   this.$router.push('/login')
+  },
+  methods: {
+    registerUser() {
+      return this.$axios
+        .post('/register', {
+          mobile: '09362712511',
+          national_code: this.register.nationalNumber,
+          fname: this.register.fname,
+          lname: this.register.lname,
+          year: this.register.date.year,
+          month: this.register.date.month,
+          day: this.register.date.day,
+          scope: 'Register',
+        })
+        .then(({ data }) => {
+          this.$setToken(data.token)
+          this.$router.push('/')
+        })
+        .catch((error) => {
+          this.errorMessage = error.response.data.message
+        })
+    },
+
+    async submit() {
+      await this.$refs.registerForm.validate()
+
+      if (this.isValid) {
+        this.loading = true
+        await this.registerUser()
+        this.loading = false
+      }
+    },
+  },
+}
+</script>
+
 <style lang="scss" scoped>
 .register-page {
   height: 100%;
