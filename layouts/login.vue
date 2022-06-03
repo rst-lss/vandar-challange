@@ -47,6 +47,10 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  * {
+    font-family: IranSans !important;
+    letter-spacing: 0px !important;
+  }
 
   @media screen and (max-width: 1000px) {
     display: none;
